@@ -1,1 +1,0 @@
-web: gunicorn uniqueuid.wsgi --log-file -
