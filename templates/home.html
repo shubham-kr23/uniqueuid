@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- https://www.youtube.com/watch?v=s6Xi7x4G7yg&ab_channel=HACKANONS -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>UniqueUID</title>
+
+    <!-- Icon -->
+    <link rel="icon" href="{% static 'img/icon.png'%}">
+
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+<!--    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">-->
+<!--    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">-->
+
+
+</head>
+
+<body>
+<div class="alignLeft">
+    <h1><span class="textSecondary">Unique</span><span class="textPrimary">UID</span></h1>
+</div>
+<div>
+    <hr>
+</div>
+
+<!--URL section Starts-->
+<div class="primaryContainer divLeft">
+    <div class="container">
+        <div class="textPrimary">
+            <h2>Enter Username</h2>
+        </div>
+<!--        <div>-->
+            <form method="POST" action="result/">
+            {% csrf_token %}
+                <div class="form-row">
+                    <input type="text" class="form-control" name="userID" id="userID" placeholder="User ID" required="required" value="{{UID}}"/>
+                </div>
+            {% comment %} </form> {% endcomment %}
+                <div class="form-row alignAdjust">
+                    <button  onclick="location.href='{% url 'script' %}'" class="btn btnOutlinePrimary" id="searchBtn">Search</button>
+                </div>
+            </form>
+                <div class="form-row alignAdjust">
+                    <button onclick="location.href='{% url 'home' %}'" class="btn btnOutlinePrimary" id="reset">Reset</button>
+                </div>
+    </div>
+</div>
+<!--URL section ends-->
+
+
+<!--Option Selection section Starts-->
+<div class="primaryContainer divRight">
+    <div class="alignAdjust strong">
+        <h2 class="textSecondary strong">Select Site to Validate</h2>
+        
+        <div class="primaryContainer">
+            <div class="textPrimary">User ID : {{UID}}</div>
+            <div class="textPrimary primaryContainer">
+                <span class="textSecondary">&#10004;</span> -> Available
+                <div></div>
+                <span class="textSecondaryR">&#10008;</span> -> Not Available
+            </div>
+        </div>
+    </div>
+    <div class="alignLeft">
+        {% comment %} <form class="alignLeft" name="siteOption" id="selectedSite" novalidate="novalidate"> {% endcomment %}
+            <div class="siteRow alignLeft">
+                <div class="textPrimary">
+                    <label class="containerBox">Instagram
+
+                        <!--to change according to response from PY file-->
+                        {% if flagInstaGram == 1 %}
+                            <span class="textSecondary">&#10004;</span>
+                        {% elif flagInstaGram == -1 %}
+                            <span class="textSecondaryR">&#10008;</span>
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+
+                        <input type="checkbox" checked="checked" id="Site_1">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="textPrimary">
+                    <label class="containerBox">Facebook
+                        
+                        <!--to change according to response from PY file-->
+                        {% if flagFacebook == 1 %}
+                            <span class="textSecondary">&#10004;</span>
+                        {% elif flagFacebook == -1 %}
+                            <span class="textSecondaryR">&#10008;</span>
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+                        
+                        <input type="checkbox" id="Site_2">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                {% comment %} <div class="textPrimary">
+                    <label class="containerBox">Twitter
+                        
+                        <!--to change according to response from PY file-->
+                        {% if flagTwitter == 1 %}
+                            <span class="textSecondary">&#10004;</span>
+                        {% elif flagTwitter == -1 %}
+                            <span class="textSecondaryR">&#10008;</span>
+                        {% else %}
+                            <span>{{flagTwitter}}</span>
+                        {% endif %}
+
+                        <input type="checkbox" id="Site_3">
+                        <span class="checkmark"></span>
+                    </label>
+                </div> {% endcomment %}
+                <div class="textPrimary">
+                    <label class="containerBox">Snapchat
+                        
+                        <!--to change according to response from PY file-->
+                        {% if flagSnapchat == 1 %}
+                            <span class="textSecondary">&#10004;</span>
+                        {% elif flagSnapchat == -1 %}
+                            <span class="textSecondaryR">&#10008;</span>
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+
+                        <input type="checkbox" id="Site_4">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="textPrimary">
+                    <label class="containerBox">Codeforces
+                        
+                        <!--to change according to response from PY file-->
+                        {% if flagCodeforces == 1 %}
+                            <span class="textSecondary">&#10004;</span>
+                        {% elif flagCodeforces == -1 %}
+                            <span class="textSecondaryR">&#10008;</span>
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+
+                        <input type="checkbox" id="Site_5">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="textPrimary">
+                    <label class="containerBox">CodeChef
+                        
+                        <!--to change according to response from PY file-->
+                        {% if flagCodechef == 1 %}
+                            <span class="textSecondary">&#10004;</span>
+                        {% elif flagCodechef == -1 %}
+                            <span class="textSecondaryR">&#10008;</span>
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+
+                        <input type="checkbox" id="Site_6">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="textPrimary">
+                    <label class="containerBox">AtCoder
+                                               
+                        <!--to change according to response from PY file-->
+                        {% if flagAtCoder == 1 %}
+                            <span class="textSecondary">&#10004;</span>
+                        {% elif flagAtCoder == -1 %}
+                            <span class="textSecondaryR">&#10008;</span>
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+
+                        <input type="checkbox" id="Site_7">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        {% comment %} </form> {% endcomment %}
+    </div>
+</div>
+<!--Option Selection section ends-->
+<!--<div id="priContaine">-->
+<!--    <iframe id="instaFrame" width = '90%' height="500px" src="http://instagram.com/shubham_kr23/?__a=1" frameborder="1" ></iframe>-->
+<!--</div>-->
+<!-- Footer Start -->
+<div class="footer">
+    <p class="textBackground adjustBorder">&copy; All Rights Reserved. Designed by
+        <a target="_blank" href="https://shubham-kr23.github.io/Portfolio/"><span class="textPrimary strong">Shubham</span></a>
+    </p>
+    <a target="_blank" class="btn btn-light btn-social adjustBorder" href="https://github.com/shubham-kr23"><i class="fab fa-github"></i></a>
+    <a target="_blank" class="btn btn-light btn-social adjustBorder" href="https://twitter.com/shubham_kr23"><i class="fab fa-twitter"></i></a>
+    <a target="_blank" class="btn btn-light btn-social adjustBorder" href="https://www.facebook.com/shubham.ankur23/"><i class="fab fa-facebook-f"></i></a>
+    <a target="_blank" class="btn btn-light btn-social adjustBorder" href="https://www.linkedin.com/in/shubham-kr23/"><i class="fab fa-linkedin-in"></i></a>
+    <a target="_blank" class="btn btn-light btn-social adjustBorder" href="https://www.instagram.com/shubham.kr23/"><i class="fab fa-instagram"></i></a>
+</div>
+<!-- Footer End -->
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="lib/typed/typed.min.js"></script>-->
+<!--<script src="lib/easing/easing.min.js"></script>-->
+<!--<script src="lib/waypoints/waypoints.min.js"></script>-->
+<!--<script src="lib/owlcarousel/owl.carousel.min.js"></script>-->
+<!--<script src="lib/isotope/isotope.pkgd.min.js"></script>-->
+<!--<script src="lib/lightbox/js/lightbox.min.js"></script>-->
+
+<!-- Contact Javascript File -->
+<!--<script src="mail/jqBootstrapValidation.min.js"></script>-->
+<!--<script src="mail/contact.js"></script>-->
+
+<!-- Template Javascript -->
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
