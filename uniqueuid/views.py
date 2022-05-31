@@ -55,7 +55,7 @@ def availableSnapchat(id):
     # id="shubham_kr2309"
     url = "https://www.snapchat.com/add/"+id #using soup.title  
 
-    print(url)
+    # print(url)
 
     req=requests.get(url)
     soup = BeautifulSoup(req.content,"html.parser")
@@ -63,8 +63,8 @@ def availableSnapchat(id):
     recived_data=soup.title.get_text()
 
 
-    print(len(recived_data))
-    print(recived_data)
+    # print(len(recived_data))
+    # print(recived_data)
     # print(soup.getText())
     # if(len(recived_data)==0):
     if(recived_data.find("Sorry,This content was not found")!=-1):
